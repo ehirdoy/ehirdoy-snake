@@ -1,0 +1,8 @@
+(executables
+ ((names (main))
+  (libraries (llama-snake lwt lambda-term))
+  (preprocess no_preprocessing)))
+
+(install
+ ((section bin)
+  (files ((main.exe as snake)))))
