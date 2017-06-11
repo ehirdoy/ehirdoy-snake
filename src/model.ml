@@ -28,7 +28,7 @@ let initial_state = {
   dim      = (0, 0)
 }
 
-let change_dir state dir =
+let change_direction state dir =
   match dir = Direction.opp_dir state.dir with
   | true  -> state
   | false -> { state with dir = dir }

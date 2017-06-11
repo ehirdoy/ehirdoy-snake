@@ -1,6 +1,6 @@
 open Notty
 
-let dot c = I.uchar A.(fg c) 0x25cf 1 1
+let dot c = I.uchar A.(fg c) 0x1F40D 1 1
 let dead_dot = dot A.lightred
 let live_dot = dot A.lightgreen
 let background (x, y) ~dim =

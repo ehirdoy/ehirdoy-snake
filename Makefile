@@ -2,17 +2,12 @@ NAME := llama-snake
 
 # Default rule
 default:
-	jbuilder build bin/main.exe
+	jbuilder build
 
-install:
-	opam-installer -i --prefix $(PREFIX) $(NAME).install
-
-uninstall:
-	opam-installer -u --prefix $(PREFIX) $(NAME).install
-
-reinstall: uninstall reinstall
+run:
+	_build/default/bin/main.exe
 
 clean:
-	rm -rf _build
+	jbuilder clean
 
-.PHONY: default install uninstall reinstall clean
+.PHONY: default clean run

@@ -5,7 +5,7 @@ type apple = point
 
 type t = point list
 
-let make ~len = 1 --> len |> List.map ~f:(fun n -> (n, 1))
+let make ~len = range 1 len |> List.map ~f:(fun n -> (n, 1))
   
 let eat t ~apple = apple :: t
 
