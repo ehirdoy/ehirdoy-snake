@@ -1,6 +1,6 @@
 (executables
  ((names (main))
-  (libraries (llama-snake lwt lambda-term))
+  (libraries (llama-snake))
   (preprocess no_preprocessing)))
 
 (install

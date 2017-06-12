@@ -49,8 +49,8 @@ let next_state state =
   | Some snake ->
       if !ate_apple then
         let w, h = state.dim in
-        let ax = (Random.int (w - 2)) + 1 in
-        let ay = (Random.int (h - 2)) + 1 in
+        let ax = (Random.int (w - 3)) + 1 in
+        let ay = (Random.int (h - 3)) + 1 in
         { state with snake = snake; apple = (ax, ay) }
       else
         { state with snake = snake }

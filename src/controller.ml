@@ -30,7 +30,7 @@ let render { Model.snake; is_alive; apple } ~dim =
   I.(strf ~attr:A.(fg lightblack) "%d %d" x y |> hsnap ~align:`Middle w)
 
 let start_refresh_timer () =
-  Lwt_unix.sleep (1.0 /. 60.0) >|= fun () -> `Refresh
+  Lwt_unix.sleep (1.0 /. 15.0) >|= fun () -> `Refresh
 
 let read_event (term:Term.t) : game_event Lwt.t=
   Lwt_stream.get (Term.events term) >|= function
