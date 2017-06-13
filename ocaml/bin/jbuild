@@ -1,0 +1,8 @@
+(executables
+ ((names (main))
+  (libraries (ocaml-llama-snake))
+  (preprocess no_preprocessing)))
+
+(install
+ ((section bin)
+  (files ((main.exe as ocaml-snake)))))

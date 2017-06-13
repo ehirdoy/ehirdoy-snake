@@ -1,8 +1,8 @@
 (executables
  ((names (main))
-  (libraries (llama-snake))
+  (libraries (reason-llama-snake))
   (preprocess no_preprocessing)))
 
 (install
  ((section bin)
-  (files ((main.exe as snake)))))
+  (files ((main.exe as reason-snake)))))

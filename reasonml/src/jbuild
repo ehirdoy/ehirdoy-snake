@@ -1,5 +1,5 @@
 (library
- ((name        llama_snake)
-  (public_name llama-snake)
+ ((name        reason_llama_snake)
+  (public_name reason-llama-snake)
   (libraries (unix lwt notty notty.lwt))
   (preprocess no_preprocessing)))

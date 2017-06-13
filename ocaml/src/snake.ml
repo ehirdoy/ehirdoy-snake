@@ -36,17 +36,7 @@ let move t ~dir ~dim =
   let t = pop_end t in
 
   (* monad *)
-  let ( >>= ) m f =
-    match m with
-    | Some x -> f x
-    | None -> None
-  in
-  let ( >|= ) m f =
-    match m with
-    | Some x -> Some (f x)
-    | None -> None
-  in
-  let return x = Some x in
+  let open Option.Monad_infix in
 
   (* checks *)
   let in_bounds (x, y as new_head) =
@@ -63,7 +53,7 @@ let move t ~dir ~dim =
   in
 
   new_head
-  |> return
+  |> Option.return
   >>= in_bounds
   >>= in_space
   >|= fun h -> h :: t

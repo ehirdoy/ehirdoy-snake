@@ -1,0 +1,5 @@
+(library
+ ((name        ocaml_llama_snake)
+  (public_name ocaml-llama-snake)
+  (libraries (unix lwt notty notty.lwt))
+  (preprocess no_preprocessing)))

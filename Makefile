@@ -4,8 +4,11 @@ NAME := llama-snake
 default:
 	jbuilder build
 
-run:
-	_build/default/bin/main.exe
+run_ocaml:
+	_build/default/ocaml/bin/main.exe
+
+run_reasonml:
+	_build/default/reasonml/bin/main.exe
 
 clean:
 	jbuilder clean

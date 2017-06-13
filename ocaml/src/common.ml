@@ -15,4 +15,8 @@ module Option = struct
     | None -> None
   let return x =
     Some x
+  module Monad_infix = struct
+    let ( >>= ) m f = bind m f
+    let ( >|= ) m f = map m f
+  end
 end
