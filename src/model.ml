@@ -10,25 +10,25 @@ type t = {
 }
 
 let can_eat_apple snake apple dir =
-  let head =
-    match snake with
-    | [] -> None
-    | x::xs -> Some x
-  in
-  let check =
-    Option.map head ~f:(fun (x,y) ->
-      let (ax, ay) = apple in
-      match dir with
-      | `Up when y-1=ay && x=ax -> true
-      | `Down when y+1=ay && x=ax -> true
-      | `Right when x+1=ax && y=ay -> true
-      | `Left when x-1=ax && y=ay -> true
-      | _ -> false
-    )
-  in
-  match check with
-  | Some x -> x
-  | None -> false
+  match snake with
+  | [] -> false
+  | (sx, sy) :: _ ->
+    let (ax, ay) = apple in
+    let apple_pos =
+      if sy - 1 = ay && sx = ax then
+        Some `Up
+      else if sy + 1 = ay && sx = ax then
+        Some `Down
+      else if sx + 1 = ax && sy = ay then
+        Some `Right
+      else if sx - 1 = ax && sy = ay then
+        Some `Left
+      else
+        None
+    in
+    match dir, apple_pos with
+    | x, (Some y) when x = y -> true
+    | _ -> false
 
 let next_state state =
   let ate_apple = ref false in
