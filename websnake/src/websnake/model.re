@@ -5,10 +5,12 @@ open Printf;
 type t = {
   snake: Snake.t,
   dir: Direction.t,
+  dir_mutex: [`Released | `Acquired],
   apple: (int, int),
   is_alive: bool,
   dim: (int, int),
-  timeoutId: option int
+  timeoutId: option Js.Global.intervalId,
+  running: bool
 };
 
 let can_eat_apple snake apple dir =>
@@ -71,10 +73,17 @@ let next_state state => {
 let initial_state = {
   snake: Snake.make len::10,
   dir: `Down,
-  apple: (0, 0),
+  dir_mutex: `Released,
+  apple: (1, 10),
   is_alive: true,
-  dim: (0, 0),
-  timeoutId: None
+  dim: (25, 25),
+  timeoutId: None,
+  running: false
 };
 
-let change_direction state dir => dir == Direction.opp_dir state.dir ? state : {...state, dir};
+let change_direction state dir => {
+  switch state.dir_mutex {
+  | `Acquired => state
+  | `Released => dir == Direction.opp_dir state.dir ? state : {...state, dir, dir_mutex:`Acquired};
+  };
+};
