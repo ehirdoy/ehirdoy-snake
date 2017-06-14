@@ -1,0 +1,11 @@
+{
+    "name": "websnake",
+    "reason": {"react-jsx": 2},
+    "bs-dependencies": ["reason-react", "bs-director", "bs-lwt"],
+    "sources": [
+        {
+            "dir": "src",
+            "subdirs": ["websnake"]
+        }
+    ]
+}

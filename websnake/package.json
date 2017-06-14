@@ -1,0 +1,26 @@
+{
+    "name": "websnake",
+    "private": true,
+    "version": "0.0.0",
+    "description": "snake on the web",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "bsb -make-world -w",
+        "build": "webpack -w",
+        "clean": "bsb -clean-world"
+    },
+    "keywords": [],
+    "author": "Richard Davison",
+    "dependencies": {
+        "bs-director": "^0.0.1",
+        "react": "^15.4.2",
+        "react-dom": "^15.4.2",
+        "reason-react": ">=0.1.4"
+    },
+    "devDependencies": {
+        "bs-platform": "^1.7.5",
+        "webpack": "^1.14.0"
+    }
+}
+
