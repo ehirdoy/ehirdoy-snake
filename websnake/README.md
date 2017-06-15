@@ -2,6 +2,9 @@
 
 Made with [ReasonReact](https://github.com/reasonml/reason-react), whose docs are [here](https://reasonml.github.io/reason-react/).
 
+[Click here for live demo!](http://192.241.133.216/)
+
+# How to install
 ```
 git clone https://github.com/rdavison/llama-snake
 cd llama-snake/websnake
