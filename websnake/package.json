@@ -13,14 +13,13 @@
     "keywords": [],
     "author": "Richard Davison",
     "dependencies": {
-        "bs-director": "^0.0.1",
-        "react": "^15.4.2",
-        "react-dom": "^15.4.2",
-        "reason-react": ">=0.1.4"
+        "bs-director": "0.0.1",
+        "react": "^15.6.1",
+        "react-dom": "^15.6.1",
+        "reason-react": "^0.1.4"
     },
     "devDependencies": {
         "bs-platform": "^1.7.5",
         "webpack": "^1.14.0"
     }
 }
-
