@@ -6,7 +6,11 @@ type apple = point;
 
 type t = list point;
 
-let make ::len => range 1 len |> List.map f::(fun n => (n, 1));
+let make ::len ::pos => {
+  let (x,y) = pos;
+  let len = len - 1;
+  range x (x+len) |> List.map f::(fun n => (n, y));
+};
 
 let eat t ::apple => [apple, ...t];
 
@@ -43,7 +47,7 @@ let move t ::dir ::dim => {
   /* checks */
   let in_bounds ((x, y) as new_head) => {
     let (width, height) = dim;
-    if ((x >= 1 && x < width - 2) && y >= 1 && y < height - 2) {
+    if ((x >= 0 && x < width-1) && y >= 0 && y < height-1) {
       Some new_head
     } else {
       None

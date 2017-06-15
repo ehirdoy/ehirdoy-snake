@@ -4,6 +4,7 @@ open Printf;
 
 type t = {
   snake: Snake.t,
+  score: int,
   dir: Direction.t,
   dir_mutex: [`Released | `Acquired],
   apple: (int, int),
@@ -60,18 +61,20 @@ let next_state state => {
   | Some snake =>
     if !ate_apple {
       let (w, h) = state.dim;
-      let ax = Random.int (w - 3) + 1;
-      let ay = Random.int (h - 3) + 1;
-      {...state, snake, apple: (ax, ay)}
+      /* yeah, apples can spawn under a snake */
+      let ax = Random.int (w-1);
+      let ay = Random.int (h-1);
+      {...state, snake, apple: (ax, ay), score: state.score + 1}
     } else {
       {...state, snake}
     }
-  | None => {...state, is_alive: false}
+  | None => {...state, is_alive: false, running: false}
   }
 };
 
 let initial_state = {
-  snake: Snake.make len::10,
+  snake: Snake.make len::1 pos::(0,0),
+  score: 0,
   dir: `Down,
   dir_mutex: `Released,
   apple: (1, 10),
