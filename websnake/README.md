@@ -2,7 +2,7 @@
 
 Made with [ReasonReact](https://github.com/reasonml/reason-react), whose docs are [here](https://reasonml.github.io/reason-react/).
 
-[Click here for live demo!](http://192.241.133.216/)
+[Click here for live demo!](http://192.241.133.216/projects/websnake/index.html)
 
 # How to install
 ```
