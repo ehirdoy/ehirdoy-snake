@@ -1,7 +1,3 @@
-open Common;
-
-open Printf;
-
 type t = {
   snake: Snake.t,
   score: int,

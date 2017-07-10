@@ -30,8 +30,7 @@ let rec mem t ::point => {
 let move t ::dir ::dim => {
   let rec pop_end snake =>
     switch snake {
-    | [] => []
-    | [x] => []
+    | [] | [_] => []
     | [x, ...xs] => [x, ...pop_end xs]
     };
   let (x, y) = List.hd t;
