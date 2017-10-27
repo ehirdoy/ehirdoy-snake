@@ -4,17 +4,17 @@ type point = (int, int);
 
 type apple = point;
 
-type t = list point;
+type t = list(point);
 
-let make ::len ::pos => {
-  let (x,y) = pos;
+let make = (~len, ~pos) => {
+  let (x, y) = pos;
   let len = len - 1;
-  range x (x+len) |> List.map f::(fun n => (n, y));
+  range(x, x + len) |> List.map(~f=(n) => (n, y))
 };
 
-let eat t ::apple => [apple, ...t];
+let eat = (t, ~apple) => [apple, ...t];
 
-let rec mem t ::point => {
+let rec mem = (t, ~point) => {
   let (x, y) = point;
   switch t {
   | [] => false
@@ -22,18 +22,19 @@ let rec mem t ::point => {
     if (x == x' && y == y') {
       true
     } else {
-      mem t' ::point
+      mem(t', ~point)
     }
   }
 };
 
-let move t ::dir ::dim => {
-  let rec pop_end snake =>
+let move = (t, ~dir, ~dim) => {
+  let rec pop_end = (snake) =>
     switch snake {
-    | [] | [_] => []
-    | [x, ...xs] => [x, ...pop_end xs]
+    | []
+    | [_] => []
+    | [x, ...xs] => [x, ...pop_end(xs)]
     };
-  let (x, y) = List.hd t;
+  let (x, y) = List.hd(t);
   let new_head =
     switch dir {
     | `Up => (x, y - 1)
@@ -41,17 +42,17 @@ let move t ::dir ::dim => {
     | `Right => (x + 1, y)
     | `Left => (x - 1, y)
     };
-  let t = pop_end t;
+  let t = pop_end(t);
   open Option.Monad_infix;
   /* checks */
-  let in_bounds ((x, y) as new_head) => {
+  let in_bounds = ((x, y) as new_head) => {
     let (width, height) = dim;
-    if ((x >= 0 && x < width-1) && y >= 0 && y < height-1) {
-      Some new_head
+    if ((x >= 0 && x < width - 1) && y >= 0 && y < height - 1) {
+      Some(new_head)
     } else {
       None
     }
   };
-  let in_space x => mem t point::x ? None : Some x;
-  new_head |> Option.return >>= in_bounds >>= in_space >|= (fun h => [h, ...t])
+  let in_space = (x) => mem(t, ~point=x) ? None : Some(x);
+  new_head |> Option.return >>= in_bounds >>= in_space >|= ((h) => [h, ...t])
 };
