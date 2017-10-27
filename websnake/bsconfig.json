@@ -7,5 +7,6 @@
             "dir": "src",
             "subdirs": ["websnake"]
         }
-    ]
+    ],
+    "refmt": 3
 }

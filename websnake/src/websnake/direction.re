@@ -1,6 +1,6 @@
 type t = [ | `Up | `Down | `Left | `Right];
 
-let opp_dir dir =>
+let opp_dir = (dir) =>
   switch dir {
   | `Up => `Down
   | `Down => `Up
